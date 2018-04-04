@@ -82,6 +82,18 @@ export default class App extends Component<Props> {
     .catch((error) => console.log(error.message));
   }
 
+  onGetPlaceByIDPress = () => {
+    RNGooglePlaces.lookUpPlaceByID('ChIJhRTXUeeROxARmk_Rp3PtIvI')
+    .then((results) => console.log(results))
+    .catch((error) => console.log(error.message));
+  }
+
+  onGetPlacesByIDsPress = () => {
+    RNGooglePlaces.lookUpPlacesByIDs(['ChIJhRTXUeeROxARmk_Rp3PtIvI', 'ChIJy8Ny34yROxARPH21hx0a1gU', 'EiZNdXJ0YWxhIE11aGFtbWVkIERyaXZlLCBMYWdvcywgTmlnZXJpYQ'])
+    .then((results) => console.log(results))
+    .catch((error) => console.log(error.message));
+  }
+
   keyExtractor = item => item.placeID;
 
   renderItem = ({ item }) => {
@@ -145,6 +157,14 @@ export default class App extends Component<Props> {
 
           <TouchableOpacity style={styles.button} onPress={this.onGetCurrentPlacePress}>
             <Text style={styles.buttonText}>Get Current Place (not on Android Emulators)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.button} onPress={this.onGetPlaceByIDPress}>
+            <Text style={styles.buttonText}>Get Place By ID</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.button} onPress={this.onGetPlacesByIDsPress}>
+            <Text style={styles.buttonText}>Get Places By IDs (New)</Text>
           </TouchableOpacity>
         </View>}
       </View>

@@ -72,6 +72,12 @@ export default class App extends Component<Props> {
     });
   }
 
+  onGetCurrentPlacePress = () => {
+    RNGooglePlaces.getCurrentPlace()
+    .then((results) => console.log(results))
+    .catch((error) => console.log(error.message));
+  }
+
   keyExtractor = item => item.placeID;
 
   renderItem = ({ item }) => {
@@ -130,6 +136,10 @@ export default class App extends Component<Props> {
 
           <TouchableOpacity style={styles.button} onPress={this.onOpenAutocompletePress}>
             <Text style={styles.buttonText}>Open Autocomplete Modal</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.button} onPress={this.onGetCurrentPlacePress}>
+            <Text style={styles.buttonText}>Get Current Place</Text>
           </TouchableOpacity>
         </View>}
       </View>

@@ -66,6 +66,10 @@ export default class App extends Component<Props> {
   onSelectSuggestion(placeID) {
     console.log(placeID);
     // getPlaceByID call here
+    RNGooglePlaces.lookUpPlaceByID(placeID)
+    .then((results) => console.log(results))
+    .catch((error) => console.log(error.message));
+
     this.setState({
       showInput: false,
       predictions: []
@@ -111,6 +115,7 @@ export default class App extends Component<Props> {
               placeholder={'Current Location'}
               placeholderTextColor='#9BABB4'
               underlineColorAndroid={'transparent'}
+              autoFocus
             />
           </View>
 
@@ -139,7 +144,7 @@ export default class App extends Component<Props> {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button} onPress={this.onGetCurrentPlacePress}>
-            <Text style={styles.buttonText}>Get Current Place</Text>
+            <Text style={styles.buttonText}>Get Current Place (not on Android Emulators)</Text>
           </TouchableOpacity>
         </View>}
       </View>

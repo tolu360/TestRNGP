@@ -25,3 +25,12 @@ allprojects {
         }
     }
 }
+
+ext {
+    compileSdkVersion   = 25
+    targetSdkVersion    = 25
+    buildToolsVersion   = "25.0.2"
+    supportLibVersion   = "25.0.2"
+    googlePlayServicesVersion = "11.6.2"
+    androidMapsUtilsVersion = "0.5+"
+}
